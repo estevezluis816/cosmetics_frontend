@@ -1,0 +1,37 @@
+.home-container {
+  text-align: center;
+  padding: 3rem;
+  background-color: #fffaf7;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.06);
+  max-width: 700px;
+  margin: auto;
+  margin-top: 4rem;
+}
+
+.titulo {
+  font-size: 2rem;
+  color: #8b5d5d;
+  margin-bottom: 1rem;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+.boton-ir {
+  padding: 0.75rem 1.5rem;
+  background-color: #f3c6c6;
+  border: none;
+  border-radius: 0.5rem;
+  color: #222;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-ir:hover {
+  background-color: #f1bcbc;
+}
