@@ -21,9 +21,12 @@ select,
 input[type='text'] {
   padding: 0.5rem;
   border-radius: 0.5rem;
-  border: 1px solid #ccc;
-  background-color: #fefefe;
+  border: 1px solid #101010;
+  background-color: #f3c6c6; /* Color de fondo más cálido y acorde */
+  color: #0d0d0d; /* Texto oscuro */
   min-width: 200px;
+  font-weight: 500;
+  font-family: inherit;
 }
 
 .grid {
@@ -65,17 +68,35 @@ input[type='text'] {
   margin-bottom: 0.25rem;
 }
 
-.favBtn {
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.favBtn,
+.cartBtn {
   background: none;
   border: none;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
 
-.favBtn:hover {
+.favBtn:hover,
+.cartBtn:hover {
   transform: scale(1.2);
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+select:hover,
+input[type='text']:hover {
+  border-color: #b98c8c;
+  background-color: #f8dede;
 }

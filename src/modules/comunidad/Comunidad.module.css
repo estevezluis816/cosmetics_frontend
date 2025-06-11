@@ -1,0 +1,168 @@
+.comunidadContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fffaf7;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+  text-align: center;
+  color: #3d2c29;
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.form input,
+.form textarea {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-family: inherit;
+}
+
+.form button {
+  align-self: flex-start;
+  background-color: #c28c8c;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.form button:hover {
+  background-color: #a86c6c;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.publicaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.autor {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #5a3e36;
+}
+
+.fecha {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+.contenido {
+  margin: 0.5rem 0 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.iconos {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.iconos button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: #5a3e36;
+}
+
+.iconos button:hover {
+  transform: scale(1.2);
+  color: #a86c6c;
+}
+
+.botonesEdicion {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.botonesEdicion button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #5a3e36;
+}
+
+.botonesEdicion button:hover {
+  transform: scale(1.1);
+  color: #a86c6c;
+}
+
+.comentariosContainer {
+  margin-top: 1.5rem;
+  border-top: 1px solid #e0d6cf;
+  padding-top: 1rem;
+}
+
+.comentario {
+  background-color: #fef9f5;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.comentariosForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.comentariosForm textarea {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.comentariosForm button {
+  align-self: flex-end;
+  background-color: #c28c8c;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.comentariosForm button:hover {
+  background-color: #a86c6c;
+}

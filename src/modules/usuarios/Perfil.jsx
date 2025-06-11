@@ -29,16 +29,13 @@ const Perfil = () => {
         <span className={styles.label}>Usuario:</span> {perfil.username}
       </p>
       <p className={styles.item}>
-        <span className={styles.label}>Nombre:</span> {perfil.first_name}
+        <span className={styles.label}>Nombre:</span> {perfil.nombre || 'No especificado'}
       </p>
       <p className={styles.item}>
-        <span className={styles.label}>Apellidos:</span> {perfil.last_name}
+        <span className={styles.label}>Tipo de piel:</span> {perfil.tipo_piel || 'No especificado'}
       </p>
       <p className={styles.item}>
-        <span className={styles.label}>Tipo de piel:</span> {perfil.tipo_piel}
-      </p>
-      <p className={styles.item}>
-        <span className={styles.label}>Preferencias:</span> {perfil.preferencias}
+        <span className={styles.label}>Preferencias:</span> {perfil.preferencias || 'No especificadas'}
       </p>
       <button onClick={() => navigate('/perfil/editar')} className={styles.editButton}>
         Editar perfil

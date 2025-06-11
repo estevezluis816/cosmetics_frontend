@@ -1,0 +1,63 @@
+/* src/modules/carrito/Carrito.module.css */
+
+.container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  display: flex;
+  gap: 1rem;
+  background-color: #fffdf9;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  align-items: center;
+}
+
+.img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.info {
+  flex-grow: 1;
+}
+
+.inputCantidad {
+  width: 50px;
+  margin-left: 0.5rem;
+}
+
+.btnEliminar {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.btnEliminar:hover {
+  background-color: #b82c31;
+}
+
+.btnConfirmar {
+  background-color: #6ba05c;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.btnConfirmar:hover {
+  background-color: #4a703f;
+}

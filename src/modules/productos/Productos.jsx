@@ -7,6 +7,7 @@ const Productos = () => {
   const [categorias, setCategorias] = useState([])
   const [filtroCategoria, setFiltroCategoria] = useState('')
   const [filtroPiel, setFiltroPiel] = useState('')
+  const [mensaje, setMensaje] = useState('')
 
   useEffect(() => {
     API.get('productos/')
@@ -18,18 +19,23 @@ const Productos = () => {
       .catch(err => console.error('Error al cargar categorías:', err))
   }, [])
 
-  const handleToggleFavorito = async (productoId) => {
+  const handleToggleFavorito = async (producto) => {
     try {
-      const producto = productos.find(p => p.id === productoId)
-
-      if (producto.es_favorito) {
-        await API.delete(`favoritos/${producto.id}/`)
+      if (producto.es_favorito && producto.id_favorito) {
+        await API.delete(`favoritos/${producto.id_favorito}/`)
       } else {
-        await API.post('favoritos/', { producto: producto.id })
+        const res = await API.post('favoritos/', { producto: producto.id })
+        producto.id_favorito = res.data.id
       }
 
       const actualizados = productos.map(p =>
-        p.id === producto.id ? { ...p, es_favorito: !p.es_favorito } : p
+        p.id === producto.id
+          ? {
+              ...p,
+              es_favorito: !p.es_favorito,
+              id_favorito: p.es_favorito ? null : producto.id_favorito
+            }
+          : p
       )
       setProductos(actualizados)
     } catch (error) {
@@ -37,19 +43,34 @@ const Productos = () => {
     }
   }
 
-  const productosFiltrados = productos.filter(p => {
-    return (
-      (!filtroCategoria || p.categoria?.id === parseInt(filtroCategoria)) &&
-      (!filtroPiel || p.tipo_piel?.toLowerCase().includes(filtroPiel.toLowerCase()))
-    )
-  })
+  const handleAgregarCarrito = async (productoId) => {
+    try {
+      await API.post('carrito/', { producto: productoId, cantidad: 1 })
+      setMensaje('Producto agregado al carrito 🛒')
+      setTimeout(() => setMensaje(''), 3000)
+    } catch (error) {
+      console.error('Error al agregar al carrito:', error)
+    }
+  }
+
+  const productosFiltrados = productos.filter(p =>
+    (!filtroCategoria || p.categoria?.id === parseInt(filtroCategoria)) &&
+    (!filtroPiel || p.tipo_piel?.toLowerCase().includes(filtroPiel.toLowerCase()))
+  )
 
   return (
     <div className={styles.container}>
-      <h2>Productos disponibles</h2>
+      <h2 className={styles.title}>Productos disponibles</h2>
+
+      {mensaje && <p className={styles.success}>{mensaje}</p>}
 
       <div className={styles.filtros}>
-        <select value={filtroCategoria} onChange={e => setFiltroCategoria(e.target.value)}>
+        <select
+          className={styles.select}
+          value={filtroCategoria}
+          onChange={e => setFiltroCategoria(e.target.value)}
+        >
+          <option value="" disabled hidden>Filtrar por categoría</option>
           <option value="">Todas las categorías</option>
           {categorias.map(c => (
             <option key={c.id} value={c.id}>{c.nombre}</option>
@@ -61,6 +82,7 @@ const Productos = () => {
           placeholder="Tipo de piel (ej. mixta)"
           value={filtroPiel}
           onChange={e => setFiltroPiel(e.target.value)}
+          className={styles.input}
         />
       </div>
 
@@ -82,13 +104,22 @@ const Productos = () => {
             {producto.promedio_calificacion && (
               <p className={styles.meta}>⭐ {producto.promedio_calificacion} / 5</p>
             )}
-            <button
-              className={styles.favBtn}
-              onClick={() => handleToggleFavorito(producto.id)}
-              title="Agregar o quitar de favoritos"
-            >
-              {producto.es_favorito ? '❤️' : '🤍'}
-            </button>
+            <div className={styles.actions}>
+              <button
+                className={styles.favBtn}
+                onClick={() => handleToggleFavorito(producto)}
+                title={producto.es_favorito ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+              >
+                {producto.es_favorito ? '❤️' : '🤍'}
+              </button>
+              <button
+                className={styles.cartBtn}
+                onClick={() => handleAgregarCarrito(producto.id)}
+                title="Agregar al carrito"
+              >
+                🛒
+              </button>
+            </div>
           </div>
         ))}
       </div>

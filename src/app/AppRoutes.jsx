@@ -8,6 +8,11 @@ import EditarPerfil from '../modules/usuarios/EditarPerfil'
 import Productos from '../modules/productos/Productos'
 import RutaProtegida from '../app/RutaProtegida'
 import Layout from '../components/Layout'
+import Comunidad from '../modules/comunidad/Comunidad'
+import Favoritos from '../modules/favoritos/Favoritos'
+import Carrito from '../modules/carrito/Carrito'
+import AsistenteVirtual from '../modules/maquillaje/AsistenteVirtual'
+import Notificaciones from '../components/Notificaciones' // 👈 Asegúrate de que esta ruta sea correcta
 import App from '../App'
 
 const AppRoutes = () => (
@@ -40,6 +45,41 @@ const AppRoutes = () => (
         <RutaProtegida>
           <Layout>
             <Productos />
+          </Layout>
+        </RutaProtegida>
+      } />
+      <Route path="/comunidad" element={
+        <RutaProtegida>
+          <Layout>
+            <Comunidad />
+          </Layout>
+        </RutaProtegida>
+      } />
+      <Route path="/favoritos" element={
+        <RutaProtegida>
+          <Layout>
+            <Favoritos />
+          </Layout>
+        </RutaProtegida>
+      } />
+      <Route path="/carrito" element={
+        <RutaProtegida>
+          <Layout>
+            <Carrito />
+          </Layout>
+        </RutaProtegida>
+      } />
+      <Route path="/maquillaje" element={
+        <RutaProtegida>
+          <Layout>
+            <AsistenteVirtual />
+          </Layout>
+        </RutaProtegida>
+      } />
+      <Route path="/notificaciones" element={   // ✅ Aquí agregamos la nueva ruta
+        <RutaProtegida>
+          <Layout>
+            <Notificaciones />
           </Layout>
         </RutaProtegida>
       } />
